@@ -1,7 +1,8 @@
-# Federated-Learning (PyTorch)
+# Replicating the DepthFL: Depthwise Federated Learning for Heterogeneous Clients (Pytorch)
 
-Implementation of the vanilla federated learning paper : [Communication-Efficient Learning of Deep Networks from Decentralized Data](https://arxiv.org/abs/1602.05629).
+Implementation of the vanilla federated learning paper: [Communication-Efficient Learning of Deep Networks from Decentralized Data](https://arxiv.org/abs/1602.05629).
 
+The original paper of DepthFL: [DepthFL: Depthwise Federated Learning for Heterogeneous Clients](https://openreview.net/forum?id=pf8RIZTMU58).
 
 Experiments are produced on MNIST, Fashion MNIST and CIFAR10 (both IID and non-IID). In case of non-IID, the data amongst the users can be split equally or unequally.
 
