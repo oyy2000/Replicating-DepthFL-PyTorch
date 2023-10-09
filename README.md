@@ -12,12 +12,12 @@ The original paper of DepthFL: [DepthFL: Depthwise Federated Learning for Hetero
 5. Use FedDyn as the optimizer instead of FedAvg.
 
 ## What should I do
-1. Implement standard FedAvg with a global model and local training on clients.
-2. Modify the global model architecture to have companion classifiers at different depths as in DSN.
-3. Implement model pruning to create local models of varying depths
-4. Implement the local training loop with classification and distillation losses
-5. Update the server aggregation to combine updates from clients as per their depth
-6. Tune hyperparameters like number of local epochs, batch size, optimizer etc.
+1. Implement standard FedAvg with a global model and local training on clients. 
+2. Modify the global model architecture to have companion classifiers at different depths as in DSN. **(reference DSN codes)**
+3. Implement model pruning to create local models of varying depths **(reference DSN codes)**
+4. Implement the local training loop with classification and distillation losses **(reference Inclusive codes)**
+5. Update the server aggregation to combine updates from clients of the same depth. **(pseudo-code)**
+6. Use FedDyn as the optimizer instead of FedAvg.
 
 ## References:
 - [Communication-Efficient Learning of Deep Networks from Decentralized Data](https://arxiv.org/abs/1602.05629)
