@@ -4,6 +4,31 @@ Implementation of the vanilla federated learning paper: [Communication-Efficient
 
 The original paper of DepthFL: [DepthFL: Depthwise Federated Learning for Heterogeneous Clients](https://openreview.net/forum?id=pf8RIZTMU58).
 
+## Key points to implement DepthFL
+1. The global model structure follows Deeply-Supervised Nets (DSN), which have companion classifiers at different depths.
+2. Local models are created by pruning the deepest layers of the global model. So a client with less resources gets a smaller local model.
+3. During training, each local model trains the classifiers corresponding to its depth using both cross-entropy loss and KL divergence loss for knowledge distillation among the classifiers.
+4. The server aggregates the local model updates from clients of the same depth into the global model.
+5. Use FedDyn as the optimizer instead of FedAvg.
+
+## What should I do
+1. Implement standard FedAvg with a global model and local training on clients.
+2. Modify the global model architecture to have companion classifiers at different depths as in DSN.
+3. Implement model pruning to create local models of varying depths
+4. Implement the local training loop with classification and distillation losses
+5. Update the server aggregation to combine updates from clients as per their depth
+6. Tune hyperparameters like number of local epochs, batch size, optimizer etc.
+
+## References:
+- [Communication-Efficient Learning of Deep Networks from Decentralized Data](https://arxiv.org/abs/1602.05629)
+- [DepthFL: Depthwise Federated Learning for Heterogeneous Clients](https://openreview.net/forum?id=pf8RIZTMU58)
+- [Deeply-Supervised Nets](https://arxiv.org/abs/1409.5185)
+- DSN codes by CAFFEE: [DSN Github](https://github.com/s9xie/DSN)
+- [FedDyn: Federated Learning with Dynamic Weighting Averaging](https://arxiv.org/abs/2003.00295)
+- InclusiveFL: [No One Left Behind: Inclusive Federated Learning over Heterogeneous Devices](https://arxiv.org/abs/2106.01997)
+- InclusiveFL codes by Pytorch: [Inclusive Github](https://github.com/Rachelxuan11/InclusiveFL)
+
+
 Experiments are produced on MNIST, Fashion MNIST and CIFAR10 (both IID and non-IID). In case of non-IID, the data amongst the users can be split equally or unequally.
 
 Since the purpose of these experiments are to illustrate the effectiveness of the federated learning paradigm, only simple models such as MLP and CNN are used.
